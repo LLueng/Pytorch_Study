@@ -26,6 +26,7 @@ data = pd.read_csv(data_file)
 # 2       4.0   NaN  178100
 # 3       NaN   NaN  140000
 print(data)
+
 # 2.2.2、处理缺失值
 # “NaN”项代表缺失值。 为了处理缺失的数据，典型的方法包括插值法和删除法， 
 # 其中插值法用一个替代值弥补缺失值，而删除法则直接忽略缺失值。
@@ -44,6 +45,7 @@ data['NumRooms'] = data['NumRooms'].fillna(data['NumRooms'].mean())
 # 2       4.0   NaN
 # 3       3.0   NaN
 print(inputs)
+
 # 2.2.3、对于inputs中的类别值或离散值，我们将“NaN”视为一个类别。 
 # 由于“巷子类型”（“Alley”）列只接受两种类型的类别值“Pave”和“NaN”， 
 # pandas可以自动将此列转换为两列“Alley_Pave”和“Alley_nan”。 
@@ -64,6 +66,7 @@ inputs['Alley_nan'] = data['Alley'].isna().astype(int)
 # 2       4.0           0          1
 # 3       3.0           0          1
 print(inputs)
+
 # 2.2.4、转换为张量格式
 # 现在inputs和outputs中的所有条目都是数值类型，它们可以转换为张量格式。
 X = torch.tensor(inputs.to_numpy(dtype=float))
@@ -75,6 +78,7 @@ y = torch.tensor(outputs.to_numpy(dtype=float))
 #          [3., 0., 1.]], dtype=torch.float64),
 #  tensor([127500., 106000., 178100., 140000.], dtype=torch.float64))
 print(X, y)
+
 # 2.2.5、总结
 # pandas软件包是Python中常用的数据分析工具中，pandas可以与张量兼容。
 # 用pandas处理缺失的数据时，我们可根据情况选择用插值法和删除法。

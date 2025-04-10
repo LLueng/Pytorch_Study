@@ -119,6 +119,7 @@ print("更改第二行第三列的值为9后的张量：", tmp3)
 #         [ 8.,  9., 10., 11.]])
 tmp3[0:2, :] = 12
 print("第一行第二行所有列更改为12后的张量", tmp3)
+
 # 2.1.4、节省内存的操作
 # 原始操作
 X = torch.arange(12, dtype=torch.float32).reshape((3,4))
@@ -142,6 +143,7 @@ before = id(X)
 X += Y
 # 下面应该是true
 id(X) == before
+
 # 2.1.5、转换为其他Python对象
 A = X.numpy()
 B = torch.tensor(A)
@@ -151,6 +153,7 @@ type(A), type(B)
 a = torch.tensor([3.5])
 # 下面的输出结果(tensor([3.5000]), 3.5, 3.5, 3)
 a, a.item(), float(a), int(a)
+
 # 2.1.6、总结
 # 深度学习存储和操作数据的主要接口是张量（维数组）。
 # 它提供了各种功能，包括基本数学运算、广播、索引、切片、内存节省和转换其他Python对象。
